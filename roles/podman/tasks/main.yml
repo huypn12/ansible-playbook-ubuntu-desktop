@@ -1,0 +1,11 @@
+---
+# tasks file for podman
+- name: Install podman
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - podman
+    - podman-compose
+  become: yes
+  become_method: sudo
