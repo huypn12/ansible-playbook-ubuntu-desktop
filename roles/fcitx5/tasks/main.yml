@@ -1,0 +1,15 @@
+---
+# tasks file for fcitx5i
+# ---
+- name: Install libvirt
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - fcitx5
+    - fcitx5-unikey
+    - fcitx5-bamboo
+    - fcitx5-mozc
+    - fcitx5-rime
+  become: yes
+  become_method: sudo
