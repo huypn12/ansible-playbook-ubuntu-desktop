@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - { role: huypn12.kvm }
+    - { role: huypn12.devtools }
+    - { role: podman }
+    - { role: fcitx5 }
+
+- hosts: all
+  roles:
+    - { role: zsh }
