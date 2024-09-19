@@ -3,9 +3,9 @@
 - name: Install podman
   ansible.builtin.apt:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
     - podman
     - podman-compose
-  become: yes
-  become_method: sudo
+  become: true
+  become_method: ansible.builtin.sudo

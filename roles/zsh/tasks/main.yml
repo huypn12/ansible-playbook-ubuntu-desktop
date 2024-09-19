@@ -4,11 +4,11 @@
 - name: Ensure zsh is installed
   ansible.builtin.apt:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
-    - zsh 
-  become: yes
-  become_method: sudo
+    - zsh
+  become: true
+  become_method: ansible.builtin.sudo
 
 - name: Ensure the user has a '~/.local/bin' directory
   ansible.builtin.file:
@@ -16,6 +16,7 @@
     state: directory
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
+    mode: "0700"
 
 - name: Download antigen
   ansible.builtin.get_url:
@@ -27,5 +28,4 @@
   ansible.builtin.copy:
     src: zshrc
     dest: "{{ ansible_env.HOME }}/.zshrc"
-
-
+    mode: "0700"
