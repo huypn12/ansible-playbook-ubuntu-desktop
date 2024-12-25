@@ -8,6 +8,3 @@
     - { role: podman }
     - { role: fcitx5 }
 
-- hosts: all
-  roles:
-    - { role: zsh }
